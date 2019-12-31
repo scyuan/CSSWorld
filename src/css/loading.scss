@@ -1,0 +1,46 @@
+@import url('https://fonts.font.im/css?family=Baloo+Bhaijaan');
+
+@function float-text-3d($shadow-color:#ccc, $depth:6, $reverse:false) {
+  $shadows: ();
+
+  @for $i from 1 to $depth {
+    $shadows: append($shadows, 0 ($i * 1px) $shadow-color, comma);
+  }
+
+  @if ($reverse==false) {
+    $shadows: append($shadows, 0 0px 15px rgba(0, 0, 0, 0.4), comma);
+  }
+
+  @else {
+    $shadows: append($shadows, 0 20px 15px rgba(0, 0, 0, 0.4), comma);
+  }
+
+  @return $shadows;
+}
+
+.loading-wrap {
+  background: cornflowerblue;
+  width: 500px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 80px;
+
+  span {
+    margin: 0 3px;
+    font-family: 'Baloo Bhaijaan', cursive;
+    text-transform: uppercase;
+    transform: translate(0, 10px);
+    animation: bounce 0.3s ease infinite alternate;
+    text-shadow: float-text-3d($reverse:false);
+  }
+}
+
+@keyframes bounce {
+  to {
+    transform: translate(0, -10px);
+    text-shadow: float-text-3d($reverse:true);
+  }
+}
