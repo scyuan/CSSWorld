@@ -1,0 +1,107 @@
+@import url('https://fonts.font.im/css?family=Raleway');
+@import url('https://fonts.font.im/css?family=Merriweather');
+
+.slide-text-wrapper {
+    height: 200px;
+    width: 100%;
+    min-width: 500px;
+    background: #313131;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+        color: #fff;
+        font-size: 14px;
+        width: 140px;
+        line-height: 24px;
+        font-family: 'Raleway', sans-serif;
+        display: inline-block;
+        text-align: left;
+        margin: 2px 0;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .desc {
+        color: #313131;
+        animation: fadeIn 2s ease forwards;
+        animation-delay: 3.3s;
+
+        &::after {
+            background: sandybrown;
+            animation: 2s slideRight 2s cubic-bezier(0.75, 0, 0, 1) forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+    }
+
+    .title {
+        font-size: 20px;
+        font-family: 'Merriweather', serif;
+        color: #313131;
+        animation: fadeIn 2s ease forwards;
+        animation-delay: 1.3s;
+
+        &::after {
+            background: crimson;
+            animation: slideRight 2s cubic-bezier(0.75, 0, 0, 1) forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+    }
+}
+
+// 这个动画不能使用opacity属性，使用opacity属性会导致子元素也不显示
+// 所以讨巧的使用color属性使文字“隐身”
+@keyframes fadeIn {
+    to {
+        color: #fff;
+    }
+}
+
+// 错误写法
+// 下面的写法达不到理想的动画
+@keyframes slideRight-fake {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    50% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+@keyframes slideRight {
+
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    51% {
+        transform-origin: right;
+    }
+
+    100% {
+        transform-origin: right;
+    }
+}
