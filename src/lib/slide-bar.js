@@ -1,13 +1,17 @@
-import '../css/slide-bar.scss'
-let slideTextWapper = document.createElement('div');
-slideTextWapper.className = 'slide-text-wrapper';
+import '../css/slide-bar.scss';
 
-let p1 = document.createElement('p');
+import {
+  createElement
+} from '../utils/dom';
+
+let slideTextWapper = createElement('div', 'slide-text-wrapper');
+
+let p1 = createElement('p', 'title');
 p1.textContent = "I'm yuan";
-p1.className = 'title';
-let p2 = document.createElement('p');
+
+let p2 = createElement('p', 'desc');
 p2.textContent = "a web developer";
-p2.className = 'desc';
+
 slideTextWapper.appendChild(p1);
 slideTextWapper.appendChild(p2);
 

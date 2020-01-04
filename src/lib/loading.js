@@ -1,11 +1,14 @@
 import '../css/loading.scss';
+import {
+  createElement
+} from '../utils/dom';
 
 let letters = ["l", "o", "a", "d", "i", "n", "g"];
 
-let loadingDiv = document.createElement('div');
-loadingDiv.className = "loading-wrap";
+let loadingDiv = createElement('div', "loading-wrap");
+
 letters.forEach((c, i) => {
-  let span = document.createElement('span');
+  let span = createElement('span');
   span.innerText = c;
   span.style.animationDelay = `${i / 10}s`;
   loadingDiv.appendChild(span);

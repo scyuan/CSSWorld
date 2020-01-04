@@ -2,7 +2,7 @@ import '../css/spin-card.scss';
 import {
     createElement,
     appendChild
-} from './dom';
+} from '../utils/dom';
 
 import {
     rgb
