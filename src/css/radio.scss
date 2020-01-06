@@ -7,10 +7,12 @@
   justify-content: center;
 
   $colors: #f7df1f, #82cd29, #41b882, #e66225;
-  $max: 100;
+  --max: 100;
 
-  @for $i from 1 to 4 {
-    &:nth-child(#{i}) div {
+
+
+  @for $i from 1 through 4 {
+    .radio:nth-child(#{$i}) {
       width: 100px;
       height: 100px;
       border-radius: 50px;
@@ -18,9 +20,21 @@
       margin: 0 10px;
       --percentage: calc(var(--curr) / var(--max) * 100%);
       background: conic-gradient(nth($colors, $i) var(--percentage), #000 0);
+      counter-reset: value var(--curr);
+      color: nth($colors, $i);
+
+      .text {
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        bottom: -30px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
 
       &::after {
-        content: var(--curr);
+        content: counter(value);
         text-align: center;
         line-height: 90px;
         color: #fff;
